@@ -17,14 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['auth']], function() {
-	Route::post('/tokens/create', function (Request $request) {
-		$token = $request->user()->createToken($request->token_name);
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/tokens/create', function (Request $request) {
+        $token = $request->user()->createToken($request->token_name);
 
-		return ['token' => $token->plainTextToken];
-	});
+        return ['token' => $token->plainTextToken];
+    });
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::get('/dashboard', function () {
+        return Inertia\Inertia::render('Dashboard/Index');
+    })->name('dashboard');
+});

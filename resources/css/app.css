@@ -1,3 +1,12 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* If you want to apply some base styles to specific elements, the easiest way is to simply add them in your CSS. */
+@layer base {
+
+}
+
+.whitespace-nowrap {
+    white-space: nowrap;
+}
