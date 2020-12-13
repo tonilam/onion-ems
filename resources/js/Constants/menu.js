@@ -3,10 +3,12 @@ module.exports = [
         title: 'Staff',
         list: [
             {
-                title: 'List staffs'
+                title: 'List staffs',
+                route: 'dashboard'
             },
             {
-                title: 'Create staff record'
+                title: 'Create staff record',
+                route: 'dashboard'
             },
         ]
     },
@@ -14,10 +16,12 @@ module.exports = [
         title: 'Client',
         list: [
             {
-                title: 'List clients'
+                title: 'List clients',
+                route: 'clients'
             },
             {
-                title: 'Create client record'
+                title: 'Create client record',
+                route: 'client.create'
             },
         ]
     },
@@ -25,16 +29,20 @@ module.exports = [
         title: 'Inventory',
         list: [
             {
-                title: 'List warehouses'
+                title: 'List warehouses',
+                route: 'dashboard'
             },
             {
-                title: 'Add new warehouse'
+                title: 'Add new warehouse',
+                route: 'dashboard'
             },
             {
-                title: 'List products'
+                title: 'List products',
+                route: 'dashboard'
             },
             {
-                title: 'Add new product'
+                title: 'Add new product',
+                route: 'dashboard'
             },
         ]
     },
@@ -42,16 +50,20 @@ module.exports = [
         title: 'Account',
         list: [
             {
-                title: 'List Invoices'
+                title: 'List Invoices',
+                route: 'dashboard'
             },
             {
-                title: 'Create new invoice'
+                title: 'Create new invoice',
+                route: 'dashboard'
             },
             {
-                title: 'List Purchase Order'
+                title: 'List Purchase Order',
+                route: 'dashboard'
             },
             {
-                title: 'Create new Purchase Order'
+                title: 'Create new Purchase Order',
+                route: 'dashboard'
             },
         ]
     },
@@ -59,16 +71,20 @@ module.exports = [
         title: 'Project',
         list: [
             {
-                title: 'List projects'
+                title: 'List projects',
+                route: 'dashboard'
             },
             {
-                title: 'Create new project'
+                title: 'Create new project',
+                route: 'dashboard'
             },
             {
-                title: 'List tasks'
+                title: 'List tasks',
+                route: 'dashboard'
             },
             {
-                title: 'Create new task'
+                title: 'Create new task',
+                route: 'dashboard'
             },
         ]
     },
@@ -76,10 +92,12 @@ module.exports = [
         title: 'Facility',
         list: [
             {
-                title: 'List facility'
+                title: 'List facility',
+                route: 'dashboard'
             },
             {
-                title: 'Add new facility'
+                title: 'Add new facility',
+                route: 'dashboard'
             },
         ]
     },

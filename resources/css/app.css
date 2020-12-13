@@ -2,6 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/*
+TailwindCSS documentation:
+https://tailwindcss.com/docs/guides/vue-3-vite
+*/
+
 /* If you want to apply some base styles to specific elements, the easiest way is to simply add them in your CSS. */
 @layer base {
 

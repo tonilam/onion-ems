@@ -25,8 +25,19 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
+// Inertia Routing Documentation:
+// https://inertiajs.com/routing
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', function () {
         return Inertia\Inertia::render('Dashboard/Index');
     })->name('dashboard');
+
+    Route::group(['prefix' => '/clients'], function () {
+        Route::get('/', function () {
+            return Inertia\Inertia::render('Client/Index');
+        })->name('clients');
+        Route::get('create', function () {
+            return Inertia\Inertia::render('Client/Create');
+        })->name('client.create');
+    });
 });
