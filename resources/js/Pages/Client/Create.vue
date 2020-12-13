@@ -27,7 +27,3 @@
         components: {AppLayout}
     }
 </script>
-
-<style scoped>
-
-</style>

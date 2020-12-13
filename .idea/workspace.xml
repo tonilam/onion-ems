@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f246574b-7b7f-4dd8-9e1b-57da0a4e03e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/Config/VueTailwind.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Client/Create.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Client/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Constants/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Constants/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Config/VueTailwind.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Config/VueTailwind.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Layouts/Components/UserNavigation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Layouts/Components/UserNavigation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Client/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Client/Create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Client/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Client/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -170,6 +169,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -193,15 +193,43 @@
       <updated>1607558528375</updated>
       <workItem from="1607558530250" duration="1113000" />
     </task>
+    <task id="LOCAL-00001" summary="Inertia routing and install Tailwind icon">
+      <created>1607827812063</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607827812063</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Inertia routing and install Tailwind icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inertia routing and install Tailwind icon" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="-1178" y="173" key="RollbackChangesDialog" timestamp="1607827721924">
+    <state x="-1223" y="217" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607872520472">
       <screen x="-1920" y="-33" width="1920" height="1057" />
     </state>
-    <state x="-1178" y="173" key="RollbackChangesDialog/0.23.1280.937/-1920.-33.1920.1057@-1920.-33.1920.1057" timestamp="1607827721924" />
+    <state x="-1223" y="217" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.937/-1920.-33.1920.1057@-1920.-33.1920.1057" timestamp="1607872520472" />
+    <state x="-1374" y="39" key="CommitChangelistDialog2" timestamp="1607827811404">
+      <screen x="-1920" y="-33" width="1920" height="1057" />
+    </state>
+    <state x="-1374" y="39" key="CommitChangelistDialog2/0.23.1280.937/-1920.-33.1920.1057@-1920.-33.1920.1057" timestamp="1607827811404" />
+    <state x="-1140" y="394" key="NewPhpFileDialog" timestamp="1607874388281">
+      <screen x="-1920" y="-33" width="1920" height="1057" />
+    </state>
+    <state x="-1140" y="394" key="NewPhpFileDialog/0.23.1280.937/-1920.-33.1920.1057@-1920.-33.1920.1057" timestamp="1607874388281" />
+    <state x="-1178" y="173" key="RollbackChangesDialog" timestamp="1607827734761">
+      <screen x="-1920" y="-33" width="1920" height="1057" />
+    </state>
+    <state x="-1178" y="173" key="RollbackChangesDialog/0.23.1280.937/-1920.-33.1920.1057@-1920.-33.1920.1057" timestamp="1607827734761" />
+    <state x="-1296" y="186" width="670" height="676" key="search.everywhere.popup" timestamp="1607879068020">
+      <screen x="-1920" y="-33" width="1920" height="1057" />
+    </state>
+    <state x="-1296" y="186" width="670" height="676" key="search.everywhere.popup/0.23.1280.937/-1920.-33.1920.1057@-1920.-33.1920.1057" timestamp="1607879068020" />
   </component>
 </project>

@@ -5,10 +5,10 @@
             hover:text-gray-700 hover:border-gray-300
             focus:outline-none focus:ring focus:border-blue-300 focus:text-gray-700 focus:border-gray-300
             transition duration-150 ease-in-out">
-            <div class="absolute object-left mt-5 shadow-xs bg-green-300 text-blue-900" style="left: -0.5rem;">
+            <div class="absolute object-left mt-5 shadow-xs bg-green-400 z-10" style="left: -0.5rem;">
                 <t-button v-for="(subItem, subIdx) in navItem.list" :key="`nav_${navIdx}_sub_${subIdx}`"
-                          class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out
-                                 hover:bg-green-100
+                          classes="block w-full px-4 py-2 text-sm leading-5 text-white transition duration-150 ease-in-out rounded-none
+                                 hover:bg-green-100 hover:text-green-400
                                  focus:outline-none focus:bg-gray-100"
                           role="menuitem" :href="subItem.route ? route(subItem.route) : '#'">
                     <span class="whitespace-nowrap">{{ subItem.title }}</span>
