@@ -1,4 +1,4 @@
-import {TAlert, TButton, TDropdown, TInput, TTable, TTextarea} from "vue-tailwind/dist/components";
+import {TAlert, TButton, TDropdown, TInput, TSelect, TTable, TTextarea} from "vue-tailwind/dist/components";
 
 // VueTailwind documentation:
 // https://www.vue-tailwind.com/docs/installation
@@ -22,13 +22,13 @@ const settings = {
                 closeIcon: 'fill-current h-4 w-4'
             },
             classes: {
-                wrapper: 'bg-blue-50 border-blue-500',
+                wrapper: 'bg-blue-100 border-blue-500',
                 body: 'text-blue-700',
                 close: 'text-blue-500 hover:bg-blue-200'
             },
             variants: {
                 danger: {
-                    wrapper: 'bg-red-50 border-red-500',
+                    wrapper: 'bg-red-100 border-red-500',
                     body: 'text-red-700',
                     close: 'text-red-500 hover:bg-red-200'
                 },
@@ -38,22 +38,22 @@ const settings = {
                     close: 'text-yellow-500 hover:bg-yellow-200'
                 },
                 info: {
-                    wrapper: 'bg-blue-50 border-blue-500',
+                    wrapper: 'bg-blue-100 border-blue-500',
                     body: 'text-blue-700',
                     close: 'text-blue-500 hover:bg-blue-200'
                 },
                 secondary: {
-                    wrapper: 'bg-gray-50 border-gray-500',
+                    wrapper: 'bg-gray-100 border-gray-500',
                     body: 'text-gray-500',
                     close: 'text-gray-500 hover:bg-gray-200'
                 },
                 primary: {
-                    wrapper: 'bg-gray-50 border-black',
+                    wrapper: 'bg-gray-100 border-black',
                     body: 'text-black',
                     close: 'text-black hover:bg-gray-200'
                 },
                 success: {
-                    wrapper: 'bg-green-50 border-green-500',
+                    wrapper: 'bg-green-100 border-green-500',
                     body: 'text-green-700',
                     close: 'text-green-500 hover:bg-green-200'
                 }
@@ -92,7 +92,14 @@ const settings = {
     't-input': {
         component: TInput,
         props: {
-            classes: 'border-2 block w-full rounded text-gray-800'
+            classes: 'block w-full px-3 py-2 text-black placeholder-gray-400 transition duration-100 ease-in-out bg-white border border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed'
+            // ...More settings
+        }
+    },
+    't-select': {
+        component: TSelect,
+        props: {
+            classes: 'block w-full pl-3 pr-10 py-2 text-black placeholder-gray-400 transition duration-100 ease-in-out bg-white border border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed'
             // ...More settings
         }
     },

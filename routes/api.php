@@ -21,5 +21,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 	Route::group(['prefix' => 'clients'], function() {
 	    Route::get('/', [\App\Http\Controllers\Api\ClientController::class, 'index']);
+        Route::post('create', [\App\Http\Controllers\Api\ClientController::class, 'store']);
     });
 });
