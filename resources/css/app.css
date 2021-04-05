@@ -8,9 +8,9 @@ https://tailwindcss.com/docs/guides/vue-3-vite
 */
 
 /* If you want to apply some base styles to specific elements, the easiest way is to simply add them in your CSS. */
-@layer base {
-
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .whitespace-nowrap {
     white-space: nowrap;

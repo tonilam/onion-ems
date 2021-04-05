@@ -9,6 +9,9 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <t-alert v-if="newClient" variant="success" show>
+                        Client: <b>{{ newClient.name }}</b> created.
+                    </t-alert>
                     <t-alert variant="warning" show>
                         <IconInfo primary="text-yellow-300" secondary="text-yellow-300" class="w-5 h-5 inline-block"/>
                         Under construction
@@ -39,6 +42,9 @@
 
     export default {
         name: "Index",
+        props: {
+            newClient: {type: Object, required: false, default: () => {}}
+        },
         components: {AppLayout},
         data() {
             return {

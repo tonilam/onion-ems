@@ -28,16 +28,11 @@ Route::group(['middleware' => ['auth']], function () {
 // Inertia Routing Documentation:
 // https://inertiajs.com/routing
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::get('/dashboard', function () {
-        return Inertia\Inertia::render('Dashboard/Index');
-    })->name('dashboard');
+    Route::get('/dashboard', fn() => inertia('Dashboard/Index'))->name('dashboard');
 
     Route::group(['prefix' => '/clients'], function () {
-        Route::get('/', function () {
-            return Inertia\Inertia::render('Client/Index');
-        })->name('clients');
-        Route::get('create', function () {
-            return Inertia\Inertia::render('Client/Create');
-        })->name('client.create');
+        Route::get('/', fn() => inertia('Client/Index'))->name('clients');
+        Route::post('/', [\App\Http\Controllers\ClientController::class, 'store'])->name('client.store');
+        Route::get('create', fn() => inertia('Client/Create'))->name('client.create');
     });
 });
