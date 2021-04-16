@@ -1,10 +1,5 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Create Client
-            </h2>
-        </template>
+    <app-layout title="Create Client">
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -41,14 +36,11 @@
 </template>
 
 <script>
-    import AppLayout from "@/Layouts/AppLayout";
-
     export default {
         name: "Index",
         props: {
             errors: Object,
         },
-        components: {AppLayout},
         data() {
             return {
                 clientForm: this.$inertia.form({

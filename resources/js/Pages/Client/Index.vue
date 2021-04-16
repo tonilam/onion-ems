@@ -1,11 +1,5 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Clients
-            </h2>
-        </template>
-
+    <app-layout title="Clients">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -38,14 +32,11 @@
 </template>
 
 <script>
-    import AppLayout from "@/Layouts/AppLayout";
-
     export default {
-        name: "Index",
+        name: "ClientIndex",
         props: {
             newClient: {type: Object, required: false, default: () => {}}
         },
-        components: {AppLayout},
         data() {
             return {
                 clientTable: {
@@ -61,6 +52,7 @@
             }
         },
         mounted() {
+            this.$eventBus.$emit('page.changeTitle', 'Clients');
             this.fetchClients();
         },
         methods: {
