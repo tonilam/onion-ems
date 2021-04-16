@@ -1,6 +1,5 @@
 <template>
     <app-layout title="Create Client">
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg in">
@@ -37,7 +36,7 @@
 
 <script>
     export default {
-        name: "Index",
+        name: "ClientCreate",
         props: {
             errors: Object,
         },

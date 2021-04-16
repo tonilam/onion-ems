@@ -18,9 +18,4 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 	Route::get('/user', function (Request $request) {
 		return $request->user();
 	});
-
-	Route::group(['prefix' => 'clients'], function() {
-	    Route::get('/', [\App\Http\Controllers\Api\ClientController::class, 'index']);
-        Route::post('create', [\App\Http\Controllers\Api\ClientController::class, 'store']);
-    });
 });

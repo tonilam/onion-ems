@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', fn() => inertia('Dashboard/Index'))->name('dashboard');
 
     Route::group(['prefix' => '/clients'], function () {
-        Route::get('/', fn() => inertia('Client/Index'))->name('clients');
-        Route::post('/', [\App\Http\Controllers\ClientController::class, 'store'])->name('client.store');
+        Route::get('/', [Controllers\ClientController::class, 'index'])->name('clients');
+        Route::post('/', [Controllers\ClientController::class, 'store'])->name('client.store');
         Route::get('create', fn() => inertia('Client/Create'))->name('client.create');
+        Route::get('{id}', [Controllers\ClientController::class, 'show'])->name('client.show');
     });
 });
