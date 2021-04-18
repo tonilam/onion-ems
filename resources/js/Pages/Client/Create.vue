@@ -24,7 +24,7 @@
                         </fieldset>
                         <fieldset>
                             <div class="flex content-end pt-3 text-right">
-                                <t-button @click.prevent="submitCreateClient" :disabled="clientForm.processing">Create</t-button>
+                                <t-button @click.prevent="createClient" :disabled="clientForm.processing">Create</t-button>
                             </div>
                         </fieldset>
                     </form>
@@ -38,7 +38,7 @@
     export default {
         name: "ClientCreate",
         props: {
-            errors: Object,
+            errors: {type: Object, required: false, default: () => null},
         },
         data() {
             return {
@@ -52,7 +52,7 @@
             this.clientForm.reset();
         },
         methods: {
-            submitCreateClient() {
+            createClient() {
                 this.clientForm.post('/clients', {
                     onSuccess: () => {
                         //

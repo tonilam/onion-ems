@@ -36,5 +36,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/', [Controllers\ClientController::class, 'store'])->name('client.store');
         Route::get('create', fn() => inertia('Client/Create'))->name('client.create');
         Route::get('{id}', [Controllers\ClientController::class, 'show'])->name('client.show');
+        Route::put('{id}', [Controllers\ClientController::class, 'update'])->name('client.update');
     });
 });

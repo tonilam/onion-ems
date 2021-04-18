@@ -17,8 +17,7 @@ class ClientController extends Controller
         $clients = Client::all();
 
         return inertia('Client/Index', [
-            'clients' => ClientResource::collection($clients),
-            'created' => $request->session()->get('created', null)
+            'clients' => ClientResource::collection($clients)
         ]);
     }
 
@@ -44,9 +43,24 @@ class ClientController extends Controller
         $client->status = $request->get("status");
         $client->save();
 
-        return Redirect::route('clients')->with([
-            'created' => $client
+        return Redirect::route('client.show', [
+            'id' => $client->id
         ]);
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $this->validate($request, [
+            "name" => "required|string",
+            "status" => "required|in:Active,Inactive"
+        ]);
+
+        $client = Client::findOrFail($id);
+        $client->name = $request->get("name");
+        $client->status = $request->get("status");
+        $client->save();
+
+        return Redirect::back();
     }
 
 }
