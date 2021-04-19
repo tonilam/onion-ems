@@ -1,0 +1,15 @@
+body {
+    font-family: Arial;
+    font-size: 11.5pt;
+    color: black;
+
+    p {
+        font-family: SansSerif;
+        font-size: 1.25rem;
+    }
+}
+
+.v-select__selections input[type="text"]:focus {
+    --tw-ring-color: unset;
+    border-color: unset;
+}

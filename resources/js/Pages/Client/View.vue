@@ -1,36 +1,37 @@
 <template>
     <app-layout :title="client.name">
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
-                    <form :disabled="clientForm.processing" class="p-2">
-                        <fieldset>
-                            <label for="name">Client Name</label>
-                            <t-input id="name" name="name" v-model="clientForm.name"/>
-                            <div v-if="errors.name" class="text-red-700 mb-3">
-                                {{ errors.name }}
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <label for="status">Status</label>
-                            <t-select
-                                placeholder="Select an option"
-                                :options="['Active', 'Inactive']"
-                                v-model="clientForm.status"
-                            ></t-select>
-                            <div v-if="errors.status" class="text-red-700 mb-3">
-                                {{ errors.status }}
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="flex content-end pt-3 text-right">
-                                <t-button @click.prevent="updateClient" :disabled="clientForm.processing">Save</t-button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <v-container :fluid="false">
+            <v-card>
+                <v-card-text>
+                <form :disabled="clientForm.processing" class="p-2">
+                    <fieldset>
+                        <v-text-field
+                            label="Client Name"
+                            id="name" name="name"
+                            v-model="clientForm.name"
+                            :error-messages="errors.name"
+                        ></v-text-field>
+                    </fieldset>
+                    <fieldset>
+                        <v-select solo
+                            label="Status"
+                            placeholder="Select an option"
+                            :items="['Active', 'Inactive']"
+                            v-model="clientForm.status"
+                            :error-messages="errors.status"
+                        ></v-select>
+                    </fieldset>
+                    <fieldset>
+                        <div class="flex content-end pt-3 text-right">
+                            <v-btn color="primary" :disabled="clientForm.processing" @click.prevent="updateClient">
+                                Save
+                            </v-btn>
+                        </div>
+                    </fieldset>
+                </form>
+                </v-card-text>
+            </v-card>
+        </v-container>
     </app-layout>
 </template>
 

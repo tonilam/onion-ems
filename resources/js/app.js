@@ -10,6 +10,7 @@ import PortalVue from 'portal-vue';
 import VueTailwind from 'vue-tailwind';
 import VueTailwindIcon from 'tv-icon';
 import VueTailwindSetting from './Config/VueTailwind';
+import vuetify from './Config/vuetify';
 import AppLayout from '@/Layouts/AppLayout'
 
 Vue.mixin({methods: {route}});
@@ -40,4 +41,5 @@ new Vue({
                 resolveErrors: page => (page.props.errors || {}),
             },
         }),
+    vuetify,
 }).$mount(app);

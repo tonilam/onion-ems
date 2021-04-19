@@ -18,7 +18,7 @@ mix.postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
     ])
-    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/style.scss', 'public/css')
     .webpackConfig(require('./webpack.config'));
 
 if (mix.inProduction()) {

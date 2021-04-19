@@ -10,7 +10,9 @@
                                 <td :class="props.tdClass">{{ props.row.status }}</td>
                                 <td :class="props.tdClass" class="w-0.5">
                                     <div class="flex items-center">
-                                        <t-button variant="primary_action" :href="`/clients/${props.row.id}`">View</t-button>
+                                        <v-btn small color="primary" :href="`/clients/${props.row.id}`">
+                                            View
+                                        </v-btn>
                                     </div>
                                 </td>
                             </tr>
