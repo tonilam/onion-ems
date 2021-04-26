@@ -1,26 +1,31 @@
 <template>
     <app-layout title="Clients">
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <t-table :headers="clientsTable.headers" :data="clients.data">
-                        <template v-slot:row="props">
-                            <tr :class="[props.trClass, props.rowIndex % 2 === 0 ? 'bg-gray-100' : '']">
-                                <td :class="props.tdClass">{{ props.row.name }}</td>
-                                <td :class="props.tdClass">{{ props.row.status }}</td>
-                                <td :class="props.tdClass" class="w-0.5">
-                                    <div class="flex items-center">
-                                        <v-btn small color="primary" :href="`/clients/${props.row.id}`">
-                                            View
-                                        </v-btn>
-                                    </div>
-                                </td>
-                            </tr>
+        <v-container :fluid="false">
+            <v-card>
+                <v-card-text>
+                    <v-data-table :headers="clientsTable.headers"
+                        :items="clients.data"
+                        :items-per-page="10"
+                        :search="clientsTable.search">
+                        <template v-slot:top>
+                            <v-text-field
+                                v-model="clientsTable.search"
+                                label="Search"
+                                append-icon="mdi-magnify"
+                                class="mx-4"
+                            ></v-text-field>
                         </template>
-                    </t-table>
-                </div>
-            </div>
-        </div>
+                        <template v-slot:item.action="{ item }" width="1%">
+                            <div class="flex items-center">
+                                <v-btn small color="primary" :href="`/clients/${item.id}`">
+                                    View
+                                </v-btn>
+                            </div>
+                        </template>
+                    </v-data-table>
+                </v-card-text>
+            </v-card>
+        </v-container>
     </app-layout>
 </template>
 
@@ -28,7 +33,7 @@
     export default {
         name: "ClientIndex",
         props: {
-            clients: {type: Array, required: false, default: () => []},
+            clients: {type: Object, required: false, default: () => {}},
         },
         data() {
             return {
@@ -38,6 +43,7 @@
                         {value: 'status', text: 'Status'},
                         {value: 'action', text: ''},
                     ],
+                    search: '',
                 }
             }
         },
