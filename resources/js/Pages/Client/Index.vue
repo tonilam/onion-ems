@@ -15,6 +15,10 @@
                                 class="mx-4"
                             ></v-text-field>
                         </template>
+                        <template v-slot:item.linked="{ item }">
+                            <span v-if="item.company"><v-chip small color="info">B</v-chip> {{ item.company.name }}</span>
+                            <span v-if="item.person"><v-chip small color="cyan">I</v-chip> {{ item.person.name }}</span>
+                        </template>
                         <template v-slot:item.action="{ item }" width="1%">
                             <div class="flex items-center">
                                 <v-btn small color="primary" :href="`/clients/${item.id}`">
@@ -40,6 +44,7 @@
                 clientsTable: {
                     headers: [
                         {value: 'name', text: 'Name'},
+                        {value: 'linked', text: 'Business/Individual'},
                         {value: 'status', text: 'Status'},
                         {value: 'action', text: ''},
                     ],

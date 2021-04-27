@@ -23,8 +23,8 @@ class CreateContactsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('company_id')->references('id')->on('companys');
-            $table->foreign('person_id')->references('id')->on('persons');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('person_id')->references('id')->on('people');
         });
     }
 
