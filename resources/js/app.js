@@ -4,8 +4,7 @@ require('moment');
 
 import Vue from 'vue';
 
-import {InertiaApp} from '@inertiajs/inertia-vue';
-import {InertiaForm} from 'laravel-jetstream';
+import { App, plugin } from '@inertiajs/inertia-vue';
 import PortalVue from 'portal-vue';
 import VueTailwind from 'vue-tailwind';
 import VueTailwindIcon from 'tv-icon';
@@ -14,8 +13,7 @@ import vuetify from './Config/vuetify';
 import AppLayout from '@/Layouts/AppLayout'
 
 Vue.mixin({methods: {route}});
-Vue.use(InertiaApp);
-Vue.use(InertiaForm);
+Vue.use(plugin);
 Vue.use(PortalVue);
 Vue.use(VueTailwind, VueTailwindSetting);
 Vue.use(VueTailwindIcon);
@@ -34,7 +32,7 @@ const app = document.getElementById('app');
 
 new Vue({
     render: (h) =>
-        h(InertiaApp, {
+        h(App, {
             props: {
                 initialPage: JSON.parse(app.dataset.page),
                 resolveComponent: (name) => require(`./Pages/${name}`).default,
