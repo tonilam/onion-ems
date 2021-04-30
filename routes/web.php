@@ -38,4 +38,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('{id}', [Controllers\ClientController::class, 'show'])->name('client.show');
         Route::put('{id}', [Controllers\ClientController::class, 'update'])->name('client.update');
     });
+
+    Route::group(['prefix' => '/companies'], function () {
+        Route::post('/', [Controllers\CompanyController::class, 'store'])->name('company.store');
+    });
+
+    Route::group(['prefix' => '/people'], function () {
+        Route::post('/', [Controllers\PersonController::class, 'store'])->name('person.store');
+    });
 });

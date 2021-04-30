@@ -26,6 +26,11 @@ class CreatePeopleTable extends Migration
         Schema::table('clients', function (Blueprint $table) {
             $table->foreign('person_id')->references('id')->on('people');
         });
+
+        Schema::table('companies', function (Blueprint $table) {
+            $table->unsignedBigInteger('primary_contact_person_id')->after('id')->nullable();
+            $table->foreign('primary_contact_person_id')->references('id')->on('people');
+        });
     }
 
     /**
@@ -35,6 +40,11 @@ class CreatePeopleTable extends Migration
      */
     public function down()
     {
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropForeign('people_primary_contact_person_id_foreign');
+            $table->dropColumn('primary_contact_person_id');
+        });
+
         Schema::table('clients', function (Blueprint $table) {
             $table->dropForeign('clients_person_id_foreign');
         });

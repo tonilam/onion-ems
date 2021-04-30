@@ -17,6 +17,7 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('person_id')->nullable();
+            $table->unsignedBigInteger('address_id')->nullable();
             $table->enum('type', ['Phone', 'Fax', 'Email', 'Address']);
             $table->string('content');
             $table->string('label')->nullable();
@@ -25,6 +26,7 @@ class CreateContactsTable extends Migration
 
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('person_id')->references('id')->on('people');
+            $table->foreign('address_id')->references('id')->on('addresses');
         });
     }
 

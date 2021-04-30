@@ -10,7 +10,7 @@
                                 id="name"
                                 name="name"
                                 v-model="clientForm.name"
-                                :error-messages="errors.name"
+                                :error-messages="clientForm.errors.name"
                             ></v-text-field>
                         </fieldset>
                         <fieldset>
@@ -18,7 +18,7 @@
                                 placeholder="Select an option"
                                 :items="['Active', 'Inactive']"
                                 v-model="clientForm.status"
-                                :error-messages="errors.status"
+                                :error-messages="clientForm.errors.status"
                             ></v-select>
                         </fieldset>
                         <fieldset>
@@ -42,9 +42,11 @@
                                         <v-autocomplete label="Company"
                                             v-model="selected_company"
                                             :items="company_names"
-                                            :error-messages="errors.status"
+                                            placeholder="Select a company to be linked to this client (type to search)"
+                                            :error-messages="clientForm.errors.status"
                                         ></v-autocomplete>
-                                        <v-btn small color="primary" class="ml-5">
+                                        <v-btn small color="primary" class="ml-5"
+                                            @click.prevent="show_modal = 'create-company-dialog'">
                                             New Company
                                         </v-btn>
                                     </v-flex>
@@ -52,9 +54,11 @@
                                         <v-autocomplete label="Person"
                                             v-model="selected_person"
                                             :items="person_names"
-                                            :error-messages="errors.status"
+                                            placeholder="Select a person to be linked to this client (type to search)"
+                                            :error-messages="clientForm.errors.status"
                                         ></v-autocomplete>
-                                        <v-btn small color="primary" class="ml-5">
+                                        <v-btn small color="primary" class="ml-5"
+                                            @click.prevent="show_modal = 'create-person-dialog'">
                                             New Person
                                         </v-btn>
                                     </v-flex>
@@ -62,27 +66,47 @@
                             </v-row>
                         </fieldset>
                         <fieldset>
-                            <div class="flex content-end pt-3 text-right">
+                            <div class="flex">
                                 <v-btn color="primary" :disabled="clientForm.processing" @click.prevent="updateClient">
                                     Save
                                 </v-btn>
+                                <transition name="slide-fade">
+                                    <v-alert v-if="clientForm.recentlySuccessful"
+                                        type="success"
+                                        dense
+                                        outlined
+                                        class="m-0 ml-5 position-absolute">
+                                        Client record Saved.
+                                    </v-alert>
+                                </transition>
                             </div>
                         </fieldset>
                     </form>
                 </v-card-text>
             </v-card>
         </v-container>
+        <create-company-dialog :show="show_modal === 'create-company-dialog'"
+            @close="show_modal = null"
+            @success="show_modal = null; preselectCompany($event)"></create-company-dialog>
+        <create-person-dialog :show="show_modal === 'create-person-dialog'"
+            @close="show_modal = null"
+            @success="show_modal = null; preselectPerson($event)"></create-person-dialog>
     </app-layout>
 </template>
 
 <script>
+    import CreateCompanyDialog from '@/Components/Dialogs/CreateCompany';
+    import CreatePersonDialog from '@/Components/Dialogs/CreatePerson';
     export default {
         name: "ClientView",
+        components: {
+            CreateCompanyDialog,
+            CreatePersonDialog
+        },
         props: {
             client: {type: Object, required: true},
             companies: {type: Array, required: true},
             people: {type: Array, required: true},
-            errors: {type: Object, required: false, default: () => null},
         },
         data() {
             return {
@@ -97,6 +121,7 @@
                 }),
                 selected_company: null,
                 selected_person: null,
+                show_modal: null,
             }
         },
         computed: {
@@ -126,6 +151,12 @@
                     this.selected_company = null;
                     this.clientForm.type = 'Individual';
                 }
+            },
+            preselectCompany(company_name) {
+                this.selected_company = company_name;
+            },
+            preselectPerson(person_name) {
+                this.selected_person = person_name;
             },
             updateClient() {
                 this.clientForm.transform((data) => ({
