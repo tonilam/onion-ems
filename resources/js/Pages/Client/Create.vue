@@ -10,7 +10,7 @@
                                 id="name"
                                 name="name"
                                 v-model="clientForm.name"
-                                :error-messages="errors.name"
+                                :error-messages="clientForm.errors.name"
                             ></v-text-field>
                         </fieldset>
                         <fieldset>
@@ -18,7 +18,7 @@
                                 placeholder="Select an option"
                                 :items="['Active', 'Inactive']"
                                 v-model="clientForm.status"
-                                :error-messages="errors.status"
+                                :error-messages="clientForm.errors.status"
                             >
                             </v-select>
                         </fieldset>
@@ -39,9 +39,6 @@
 <script>
     export default {
         name: "ClientCreate",
-        props: {
-            errors: {type: Object, required: false, default: () => null},
-        },
         data() {
             return {
                 clientForm: this.$inertia.form({

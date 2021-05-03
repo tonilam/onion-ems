@@ -14,18 +14,21 @@ class ClientResource extends JsonResource
      */
     public function toArray($request)
     {
+        $linked_name = null;
+        if ($this->person) {
+            $linked_name = $this->person->getFullName();
+        }
+        if ($this->company) {
+            $linked_name = $this->company->name;
+        }
+
         return [
             'id' => $this->id,
             'name' => $this->name,
             'status' => $this->status,
-            'company' => $this->company ? [
-                'id' => $this->company->id,
-                'name' => $this->company->name,
-            ] : null,
-            'person' => $this->person ? [
-                'id' => $this->person->id,
-                'name' => $this->person->getFullName(),
-            ] : null,
+            'linked_name' => $linked_name,
+            'company_id' => $this->company_id,
+            'person_id' => $this->person_id,
         ];
     }
 }

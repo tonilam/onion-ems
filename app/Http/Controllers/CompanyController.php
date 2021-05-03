@@ -11,9 +11,20 @@ use Inertia\Response;
 class CompanyController extends Controller
 {
 
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
+        $companies = Company::paginate();
 
+        $response = [
+            // Web View
+            0 => inertia('Client/Index', [
+                'people' => $companies
+            ]),
+            // Json Response
+            1 => $companies
+        ];
+
+        return $response[request()->expectsJson()];
     }
 
     public function show(Request $request, $id): Response

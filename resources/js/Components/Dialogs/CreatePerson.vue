@@ -60,17 +60,13 @@
                 this.$emit('close');
             },
             submitForm() {
-                this.createForm.post('/people', {
-                    onSuccess: () => {
-                        this.$emit('success', this.createForm.first_name + ' ' + this.createForm.last_name);
-                        this.createForm.reset();
-                    },
-                    onError: () => {
-                        //
-                    },
-                    onfinish: () => {
-                        //
-                    }
+                axios.post('/people', this.createForm.data()).then(() => {
+                    this.$emit('success', this.createForm.first_name + ' ' + this.createForm.last_name);
+                    this.createForm.reset();
+                }).catch(error => {
+                    this.createForm.errors = error.response.data.errors;
+                }).finally(() => {
+                    //
                 });
             }
         }

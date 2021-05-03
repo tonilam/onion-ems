@@ -40,10 +40,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     });
 
     Route::group(['prefix' => '/companies'], function () {
+        Route::get('/', [Controllers\CompanyController::class, 'index'])->name('companies');
         Route::post('/', [Controllers\CompanyController::class, 'store'])->name('company.store');
     });
 
     Route::group(['prefix' => '/people'], function () {
+        Route::get('/', [Controllers\PersonController::class, 'index'])->name('people');
         Route::post('/', [Controllers\PersonController::class, 'store'])->name('person.store');
+        Route::get('{id}', [Controllers\PersonController::class, 'show'])->name('person.show');
+        Route::put('{id}', [Controllers\PersonController::class, 'update'])->name('person.update');
     });
 });

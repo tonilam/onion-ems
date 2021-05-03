@@ -9,31 +9,42 @@ use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 use Inertia\Response;
 
 class ClientController extends Controller
 {
 
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
-        $clients = Client::all();
+        $clients = Client::paginate();
 
-        return inertia('Client/Index', [
-            'clients' => ClientResource::collection($clients)
-        ]);
+        $response = [
+            // Web View
+            0 => inertia('Client/Index', [
+                'clients' => ClientResource::collection($clients)
+            ]),
+            // Json Response
+            1 => $clients
+        ];
+
+        return $response[request()->expectsJson()];
     }
 
     public function show(Request $request, $id): Response
     {
         $client = Client::findOrFail($id);
-        $companies = Company::select('id', 'name')->get();
-        $people = Person::select('id', 'first_name', 'last_name')->get();
 
-        return inertia('Client/View', [
-            'client' => $client,
-            'companies' => $companies,
-            'people' => $people,
-        ]);
+        $response = [
+            // Web View
+            0 => inertia('Client/View', [
+                'client' => fn() => $client
+            ]),
+            // Json Response
+            1 => $client
+        ];
+
+        return $response[request()->expectsJson()];
     }
 
     public function store(Request $request): RedirectResponse
@@ -54,7 +65,7 @@ class ClientController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             "name"       => "required|string",
@@ -76,7 +87,7 @@ class ClientController extends Controller
         }
         $client->save();
 
-        return Redirect::back();
+        return $this->resolve();
     }
 
 }
