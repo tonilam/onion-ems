@@ -10,6 +10,9 @@
             <v-tab v-show="client.person_id">
                 Person
             </v-tab>
+            <v-tab v-show="client.company_id">
+                Company
+            </v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab">
             <v-tab-item key="Client">
@@ -18,6 +21,9 @@
             <v-tab-item key="Person">
                 <person-info-card v-show="client.person_id" :person-id="client.person_id"></person-info-card>
             </v-tab-item>
+            <v-tab-item key="Company">
+                <company-info-card v-show="client.company_id" :company-id="client.company_id"></company-info-card>
+            </v-tab-item>
         </v-tabs-items>
 
     </app-layout>
@@ -25,12 +31,14 @@
 
 <script>
     import ClientInfoCard from '@/Components/Cards/ClientInfoCard';
+    import CompanyInfoCard from '@/Components/Cards/CompanyInfoCard';
     import PersonInfoCard from '@/Components/Cards/PersonInfoCard';
 
     export default {
         name: "ClientView",
         components: {
             ClientInfoCard,
+            CompanyInfoCard,
             PersonInfoCard
         },
         props: {

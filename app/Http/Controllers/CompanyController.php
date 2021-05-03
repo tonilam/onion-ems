@@ -27,12 +27,21 @@ class CompanyController extends Controller
         return $response[request()->expectsJson()];
     }
 
-    public function show(Request $request, $id): Response
+    public function show(Request $request, $id)
     {
+        $company = Company::findOrFail($id);
 
+        $response = [
+            // Web View
+            0 => inertia('Company/View', ['company' => $company]),
+            // Json Response
+            1 => $company
+        ];
+
+        return $response[request()->expectsJson()];
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required'
@@ -42,12 +51,20 @@ class CompanyController extends Controller
         $company->name = $request->get('name');
         $company->save();
 
-        return Redirect::back();
+        return $this->resolve();
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
 
+        $company = Company::findOrFail($id);
+        $company->name = $request->get('name');
+        $company->save();
+
+        return $this->resolve();
     }
 
 }

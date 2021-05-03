@@ -42,6 +42,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::group(['prefix' => '/companies'], function () {
         Route::get('/', [Controllers\CompanyController::class, 'index'])->name('companies');
         Route::post('/', [Controllers\CompanyController::class, 'store'])->name('company.store');
+        Route::get('{id}', [Controllers\CompanyController::class, 'show'])->name('company.show');
+        Route::put('{id}', [Controllers\CompanyController::class, 'update'])->name('company.update');
     });
 
     Route::group(['prefix' => '/people'], function () {

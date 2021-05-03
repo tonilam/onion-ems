@@ -148,13 +148,15 @@
             }
         },
         created() {
-            this.$eventBus.$on('people.reload', this.refresh);
+            this.$eventBus.$on('company.updated', this.refresh);
+            this.$eventBus.$on('person.updated', this.refresh);
         },
         mounted() {
             this.refresh();
         },
         beforeDestroy() {
-            this.$eventBus.$off('people.reload', this.refresh);
+            this.$eventBus.$off('company.updated', this.refresh);
+            this.$eventBus.$off('person.updated', this.refresh);
         },
         methods: {
             refresh() {

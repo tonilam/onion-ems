@@ -5,7 +5,7 @@
                 <form :disabled="personForm.processing" class="p-2">
                     <fieldset>
                         <v-row>
-                            <v-col>
+                            <v-col class="col-12 col-sm-6 col-lg-4">
                                 <v-text-field
                                     label="First Name"
                                     id="first_name"
@@ -14,7 +14,7 @@
                                     :error-messages="personForm.errors.first_name"
                                 ></v-text-field>
                             </v-col>
-                            <v-col>
+                            <v-col class="col-12 col-sm-6 col-lg-4">
                                 <v-text-field
                                     label="Middle Name"
                                     id="middle_name"
@@ -23,7 +23,7 @@
                                     :error-messages="personForm.errors.middle_name"
                                 ></v-text-field>
                             </v-col>
-                            <v-col>
+                            <v-col class="col-12 col-sm-6 col-lg-4">
                                 <v-text-field
                                     label="Last Name"
                                     id="last_name"
@@ -63,7 +63,7 @@
                     </fieldset>
                     <fieldset>
                         <v-row>
-                            <v-col>
+                            <v-col class="col-12 col-sm-6 col-lg-4">
                                 <v-menu ref="menu"
                                     v-model="dob_picker"
                                     :close-on-content-click="false"
@@ -194,7 +194,7 @@
                     this.personForm.recentlySuccessful = true;
                     setTimeout(() => this.personForm.recentlySuccessful = false, 2000);
                     this.formInit(this.personForm.data());
-                    this.$eventBus.$emit('people.reload');
+                    this.$eventBus.$emit('person.updated');
                 }).catch(error => {
                     this.personForm.errors = error.response.data.errors;
                 }).finally(() => {
