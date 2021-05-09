@@ -35,4 +35,35 @@ class ContactController extends Controller
         return $response[request()->expectsJson()];
     }
 
+    public function store(Request $request)
+    {
+
+        $this->validate($request, [
+            "type" => "required|in:Phone,Fax,Email,Address",
+            "content" => "required|string",
+            "label" => "nullable|string",
+            'person_id' => 'required_without:company_id|nullable|exists:people,id',
+            'company_id' => 'required_without:person_id|nullable|exists:companies,id',
+        ]);
+
+        $contact = new Contact;
+        $contact->company_id = $request->get("company_id");
+        $contact->person_id = $request->get("person_id");
+        $contact->type = $request->get("type");
+        $contact->content = $request->get("content");
+        $contact->label = $request->get("label");
+        $contact->save();
+
+        $response = [
+            // Web View
+            0 => inertia('Contact/View', [
+                'contact' => new ContactResource($contact)
+            ]),
+            // Json Response
+            1 => new ContactResource($contact)
+        ];
+
+        return $response[request()->expectsJson()];
+    }
+
 }

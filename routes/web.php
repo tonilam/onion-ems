@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::group(['prefix' => '/contacts'], function () {
         Route::get('/', [Controllers\ContactController::class, 'index'])->name('contacts');
+        Route::post('/', [Controllers\ContactController::class, 'store'])->name('contact.store');
     });
 
     Route::group(['prefix' => '/people'], function () {
