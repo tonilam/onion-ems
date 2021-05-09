@@ -12,4 +12,25 @@ body {
         font-family: SansSerif;
         font-size: 1.25rem;
     }
+
+    h1 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 1.25em;
+        font-weight: bold;
+    }
+
+    h1, h2, h3 {
+        &.card-title {
+            color: #2E7D32;
+        }
+    }
 }
